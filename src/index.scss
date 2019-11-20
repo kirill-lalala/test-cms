@@ -1,3 +1,7 @@
+*{
+  box-sizing: border-box;
+}
+
 html {
   height: 100%;
 }
@@ -6,4 +10,28 @@ body{
   margin: 0;
   padding: 0;
   height: 100%;
+}
+
+a{
+  position: relative;
+  color: #000;
+  text-decoration: none;
+  &:hover{
+    color: #EC2138;
+    border-bottom: 1px solid;
+  }
+
+}
+
+ul{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+hr{
+  height: 1px;
+  background: #000;
+  opacity: .05;
+  border: none;
 }
