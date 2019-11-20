@@ -1,0 +1,26 @@
+.wrapper{
+  display: grid;
+  grid-template-rows: 1fr auto;
+  min-height: 100vh;
+}
+
+.main{
+  display: flex;
+  background-color: #F5F5F5;
+}
+
+.sidebar{
+  min-width: 200px;
+  background-color: #F5F5F5;
+}
+
+.content{
+  min-height: 600px;
+  align-self: flex-start;
+  width: 100%;
+  background-color: white;
+}
+
+.footer{
+  background-color: #fff;
+}
