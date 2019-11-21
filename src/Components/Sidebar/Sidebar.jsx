@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Sidebar.module.scss';
+import {NavLink} from "react-router-dom";
 
 const Sidebar = props => {
     return (
@@ -16,9 +17,9 @@ const Sidebar = props => {
 
             <div className={styles.navigation}>
                 <ul>
-                    <li className={styles.navigation__item}><a href="">журнал</a></li>
-                    <li className={styles.navigation__item}><a href="">агентсва</a></li>
-                    <li className={styles.navigation__item}><a href="">инструменты</a></li>
+                    <li className={styles.navigation__item}><NavLink to="">журнал</NavLink></li>
+                    <li className={styles.navigation__item}><NavLink to="">агентсва</NavLink></li>
+                    <li className={styles.navigation__item}><NavLink to="/tools">инструменты</NavLink></li>
                 </ul>
             </div>
 
@@ -26,9 +27,9 @@ const Sidebar = props => {
 
             <div className={styles.services}>
                 <ul>
-                    <li className={styles.services__item}><a href="">Избранное</a></li>
-                    <li className={styles.services__item}><a href="">Поиск</a></li>
-                    <li className={styles.services__item}><a href="">Кабинет агенства</a></li>
+                    <li className={styles.services__item}><NavLink to="/favorites">Избранное</NavLink></li>
+                    <li className={styles.services__item}><NavLink to="">Поиск</NavLink></li>
+                    <li className={styles.services__item}><NavLink to="">Кабинет агенства</NavLink></li>
                 </ul>
             </div>
         </div>

@@ -2,6 +2,9 @@ import React from 'react';
 import logo from './logo.svg';
 import Sidebar from "./Components/Sidebar/Sidebar";
 import styles from  './App.module.scss';
+import Tools from "./Components/Tools/Tools";
+import {Route} from "react-router-dom";
+import Favorites from "./Components/Favorites/Favorites";
 
 function App() {
   return (
@@ -13,7 +16,8 @@ function App() {
         </div>
 
         <div className={styles.content}>
-          content
+          <Route path="/tools" render={() => <Tools/>}/>
+          <Route path="/favorites" render={() => <Favorites/>}/>
         </div>
       </div>
 

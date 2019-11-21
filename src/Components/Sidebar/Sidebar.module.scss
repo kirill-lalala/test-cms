@@ -71,8 +71,9 @@
 
     &:first-child{
       &::after{
-        content: '3';
+        content: '1';
         position: absolute;
+        display: none;
         right: 0;
         bottom: 0;
         width: 16px;
