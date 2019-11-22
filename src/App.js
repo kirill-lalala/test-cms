@@ -16,7 +16,7 @@ function App() {
         </div>
 
         <div className={styles.content}>
-          <Route path="/tools" render={() => <Tools/>}/>
+          <Route path="/instruments" render={() => <Tools/>}/>
           <Route path="/favorites" render={() => <Favorites/>}/>
         </div>
       </div>

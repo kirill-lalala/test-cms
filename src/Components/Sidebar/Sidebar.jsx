@@ -19,7 +19,7 @@ const Sidebar = props => {
                 <ul>
                     <li className={styles.navigation__item}><NavLink to="">журнал</NavLink></li>
                     <li className={styles.navigation__item}><NavLink to="">агентсва</NavLink></li>
-                    <li className={styles.navigation__item}><NavLink to="/tools">инструменты</NavLink></li>
+                    <li className={styles.navigation__item}><NavLink to="/instruments">инструменты</NavLink></li>
                 </ul>
             </div>
 
