@@ -5,9 +5,7 @@ const CHANGE_SORT_PARAMS = 'CHANGE_SORT_PARAMS';
 
 let initialState = {
     direction: false,
-    data: {
-        data: []
-    }
+    data: []
 };
 
 export const toolsReducer = (state = initialState, action) => {
@@ -15,28 +13,28 @@ export const toolsReducer = (state = initialState, action) => {
         case(SET_DATA):
             return{
                 ...state,
-                data: action.data
+                ...action.data
             };
         case(CHANGE_SORT_PARAMS):
             return{
                 ...state,
                 sortBy: action.sortBy,
-                direction: action.direction
+                direction: action.direction,
+                currentPageUrl: action.currentPageUrl
             };
         default: return state;
     }
 };
 
 export const setData = (data) => ({type: SET_DATA, data});
-export const changeSortParams = (sortBy, direction) => ({type: CHANGE_SORT_PARAMS, sortBy, direction});
+export const changeSortParams = (sortBy, direction, page) => ({type: CHANGE_SORT_PARAMS, sortBy, direction, currentPageUrl: page});
 
-export const getData = (sortBy, direction) => {
+export const getData = (page, sortBy, direction) => {
     return dispatch => {
-        getCrm(sortBy, direction).then( data => {
+        getCrm(page, sortBy, direction).then( data => {
                 console.log(data);
-                sortBy && dispatch( changeSortParams(sortBy, direction));
+                sortBy && dispatch( changeSortParams(sortBy, direction, page));
                 dispatch( setData(data.data) );
-
         });
     }
 };
