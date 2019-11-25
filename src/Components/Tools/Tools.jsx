@@ -1,8 +1,8 @@
 import React from 'react';
-import Crm from "../Сrm/Crm";
 import styles from './Tools.module.scss';
 import {connect} from "react-redux";
 import {changeSortParams, getData} from "../../redux/reducers/tools-reducer";
+import Cms from "../Сms/Cms";
 
 class Tools extends React.Component {
 
@@ -37,14 +37,9 @@ class Tools extends React.Component {
 
                     <tbody>
                     {
-                        this.props.crmSystems &&
-                        this.props.crmSystems.map(crm => {
-                                return <Crm key={crm.id} title={crm.title}
-                                            img={crm.img} rate={crm.rate}
-                                            partnersCount={crm.partnersCount}
-                                            worksCount={crm.worksCount}
-                                            code={crm.code} id={crm.id}
-                                            isToolsComponent={true}/>
+                        this.props.cmsSystems &&
+                        this.props.cmsSystems.map(c => {
+                                return <Cms key={c.id} {...c} isToolsComponent={true}/>
                         })
                     }
                     </tbody>
@@ -67,7 +62,7 @@ class Tools extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        current_page: state.toolsPage.current_page, crmSystems: state.toolsPage.data, direction: state.toolsPage.direction,
+        current_page: state.toolsPage.current_page, cmsSystems: state.toolsPage.data, direction: state.toolsPage.direction,
         nextPage: state.toolsPage.next_page_url, prevPage: state.toolsPage.prev_page_url, lastPage: state.toolsPage.last_page_url,
         firstPage: state.toolsPage.first_page_url, sortBy: state.toolsPage.sortBy
     }

@@ -1,18 +1,18 @@
 import React, {useState} from 'react';
 import styles from '../Tools/Tools.module.scss';
-import {NavLink} from "react-router-dom";
 import {connect} from "react-redux";
-import {addCrm, removeCrm} from "../../redux/reducers/favorites-reducer";
+import {addCms, removeCms} from "../../redux/reducers/favorites-reducer";
+import {NavLink} from "react-router-dom";
 
-const Crm = ({addCrm, removeCrm, ...props }) => {
+const Cms = ({addCms, removeCms, ...props }) => {
     const [checked, setChecked] = useState(false);
 
     const onCheckedClick = (value, props, id) => {
         setChecked(value);
         if(value) {
-            addCrm(props);
+            addCms(props);
         }else{
-            removeCrm(id);
+            removeCms(id);
         }
     };
 
@@ -30,5 +30,5 @@ const Crm = ({addCrm, removeCrm, ...props }) => {
 };
 
 export default connect(null, {
-    addCrm, removeCrm
-})(Crm);
+    addCms, removeCms
+})(Cms);

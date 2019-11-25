@@ -1,18 +1,13 @@
 import React from 'react';
 import {connect} from "react-redux";
 import styles from "../Tools/Tools.module.scss";
-import Crm from "../Сrm/Crm";
+import Cms from "../Сms/Cms";
 
 const Favorites = props => {
     return (
         <div>
             <table className={styles.table}>
-                {props.selectedCrmSystems.map(s => <Crm key={s.id} title={s.title}
-                                                        img={s.img} rate={s.rate}
-                                                        partnersCount={s.partnersCount}
-                                                        worksCount={s.worksCount}
-                                                        code={s.code}
-                                                        isFavoritesComponent={true}/>)}
+                {props.selectedCmsSystems.map(c => <Cms {...c} isFavoritesComponent={true}/>)}
             </table>
         </div>
     );
@@ -20,7 +15,7 @@ const Favorites = props => {
 
 const mapStateToProps = state => {
     return {
-        selectedCrmSystems: state.favoritePage.selectedCrmSystems
+        selectedCmsSystems: state.favoritePage.selectedCmsSystems
     }
 };
 
