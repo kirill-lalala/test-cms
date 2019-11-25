@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import Sidebar from "./Components/Sidebar/Sidebar";
 import styles from  './App.module.scss';
 import Tools from "./Components/Tools/Tools";
@@ -21,10 +20,8 @@ function App() {
         </div>
       </div>
 
-      <div className={styles.footer}>
-        <div>lorem</div>
-        <div>Lorem ipsum.</div>
-        <div>Lorem ipsum dolor sit.</div>
+      <div className={styles.footer} style={{display: "flex", justifyContent: "center", padding:"10px"}}>
+        FOOTER DATA
       </div>
     </div>
   );

@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
 import styles from "../Tools/Tools.module.scss";
-import {NavLink} from "react-router-dom";
 import Crm from "../Сrm/Crm";
 
 const Favorites = props => {

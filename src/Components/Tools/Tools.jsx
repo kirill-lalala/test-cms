@@ -3,7 +3,6 @@ import Crm from "../Сrm/Crm";
 import styles from './Tools.module.scss';
 import {connect} from "react-redux";
 import {changeSortParams, getData} from "../../redux/reducers/tools-reducer";
-import {addCrm} from "../../redux/reducers/favorites-reducer";
 
 class Tools extends React.Component {
 
@@ -28,8 +27,10 @@ class Tools extends React.Component {
                             <th className={styles.table__cell}>название</th>
                             <th className={`${styles.table__cell} ${styles.table__cell_sortElement}` }
                                 onClick={() => this.changeSortParams('works_count', !this.props.direction)}>проекты</th>
-                            <th className={`${styles.table__cell} ${styles.table__cell_sortElement}`}>партнеры</th>
-                            <th className={`${styles.table__cell} ${styles.table__cell_sortElement}`}>оценка пользователей</th>
+                            <th className={`${styles.table__cell} ${styles.table__cell_sortElement}`}
+                                onClick={() => this.changeSortParams('partners_count', !this.props.direction)}>партнеры</th>
+                            <th className={`${styles.table__cell} ${styles.table__cell_sortElement}`}
+                                onClick={() => this.changeSortParams('rate', !this.props.direction)}>оценка пользователей</th>
                             <th className={styles.table__cell}>сравнить</th>
                         </tr>
                     </thead>
@@ -65,7 +66,6 @@ class Tools extends React.Component {
 }
 
 let mapStateToProps = (state) => {
-    debugger;
     return {
         current_page: state.toolsPage.current_page, crmSystems: state.toolsPage.data, direction: state.toolsPage.direction,
         nextPage: state.toolsPage.next_page_url, prevPage: state.toolsPage.prev_page_url, lastPage: state.toolsPage.last_page_url,

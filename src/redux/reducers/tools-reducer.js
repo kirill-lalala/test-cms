@@ -32,7 +32,7 @@ export const changeSortParams = (sortBy, direction, page) => ({type: CHANGE_SORT
 export const getData = (page, sortBy, direction) => {
     return dispatch => {
         getCrm(page, sortBy, direction).then( data => {
-                console.log(data);
+                console.log(data.data);
                 sortBy && dispatch( changeSortParams(sortBy, direction, page));
                 dispatch( setData(data.data) );
         });
