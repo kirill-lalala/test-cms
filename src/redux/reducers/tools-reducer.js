@@ -52,8 +52,8 @@ export const getData = (page, sortBy, direction) => {
                                     data: data.data.map(cms => ( {...cms, checked: false} ) )
                               };
 
-                console.log(newData);
                 dispatch( setData(newData) );
+                localStorage.setItem(`locState`, JSON.stringify(newData));
         });
     }
 };

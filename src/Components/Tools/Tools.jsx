@@ -16,6 +16,7 @@ class Tools extends React.Component {
 
     componentDidMount() {
         this.props.getData();
+
     }
 
     render(){

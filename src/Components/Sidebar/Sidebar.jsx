@@ -20,7 +20,7 @@ const Sidebar = ({favoriteCount}) => {
                 <ul>
                     <li className={styles.navigation__item}><NavLink to="">журнал</NavLink></li>
                     <li className={styles.navigation__item}><NavLink to="">агентсва</NavLink></li>
-                    <li className={styles.navigation__item}><NavLink to="/instruments">инструменты</NavLink></li>
+                    <li className={styles.navigation__item}><NavLink to="/instruments" activeClassName={styles.activeLink}>инструменты</NavLink></li>
                 </ul>
             </div>
 
@@ -28,8 +28,8 @@ const Sidebar = ({favoriteCount}) => {
 
             <div className={styles.services}>
                 <ul>
-                    <li className={styles.services__item}>
-                        <NavLink to="/favorites">Избранное</NavLink>
+                    <li className={`${styles.services__item} ${styles.favoriteLink}`}>
+                        <NavLink to="/favorites"  activeClassName={styles.activeLink}>Избранное</NavLink>
                         <span className={favoriteCount && 'dBlock'}>{favoriteCount}</span>
                     </li>
                     <li className={styles.services__item}><NavLink to="">Поиск</NavLink></li>

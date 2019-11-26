@@ -18,7 +18,12 @@ const Cms = ({addCms, removeCms, changeChecked, checked, ...props }) => {
 
     return (
         <tr className={styles.table__row}>
-            <td className={styles.table__cell}><NavLink to={`/instruments/${props.code}`}>{props.title}</NavLink></td>
+            <td className={styles.table__cell}>
+                <NavLink to={`/instruments/${props.code}`} className={styles.cmsTitle}>
+                    <img src={props.image} alt=""/>
+                    <p>{props.title}</p>
+                </NavLink>
+            </td>
             <td className={styles.table__cell}>{props.worksCount} проекта</td>
             <td className={styles.table__cell}>{props.partnersCount || 0} партнеров</td>
             <td className={styles.table__cell}>{props.rate}</td>
