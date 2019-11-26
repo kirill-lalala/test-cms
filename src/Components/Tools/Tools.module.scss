@@ -19,28 +19,75 @@
     }
   }
   &__cell{
+    //display: flex;
     position: relative;
     text-align: left;
     font-size: 14px;
     border-bottom: 1px solid rgba(0, 0 , 0, 0.1);
     height: 80px;
     padding-left: 10px;
+    input{
+      display: none;
+      &:checked{
+        &+label{
+          background-color: #DE001B;
+          &::before, &::after{
+            content: '';
+            position: absolute;
+            background-color: #fff;
+          }
+          &::before{
+            top: 10px;
+            left: 4px;
+            width: 5px;
+            height: 1px;
+            transform: rotate(45deg);
+          }
+          &::after{
+            top: 8px;
+            left: 7px;
+            width: 8px;
+            height: 1px;
+            transform: rotate(-45deg);
+          }
+        }
+      }
+    }
+    &_checked{
+      position: relative;
+      display: block;
+      width: 20px;
+      height: 20px;
+      border: 1px solid #DE001B;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      border-radius: 3px;
+    }
     .cmsTitle{
       display: flex;
       align-items: center;
-      img{
-        width: 25px;
-        margin-right: 15px;
-      }
-      p{
-        width: 100px;
-        text-align: left;
-      }
+    }
+    .sponsor{
+      position: absolute;
+      left: -25px;
+      width: 10px;
+    }
+    .image{
+      width: 27px;
+      margin-right: 15px;
+    }
+    .text{
+      text-align: left;
+    }
+    p{
+      width: 100px;
+      text-align: left;
     }
     &:first-of-type{
+      display: flex;
+      align-items: center;
       text-align: center;
       padding-right: 150px;
-      width: 190px;
     }
     &_sortElement{
       &:hover{
@@ -61,4 +108,5 @@
 
     }
   }
+
 }

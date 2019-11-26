@@ -16,9 +16,12 @@ a{
   position: relative;
   color: #000;
   text-decoration: none;
-
+  text-align: left;
 }
 
+p{
+  margin: 0;
+}
 ul{
   margin: 0;
   padding: 0;
@@ -30,6 +33,10 @@ hr{
   background: #000;
   opacity: .05;
   border: none;
+}
+
+img{
+  max-width: 100%;
 }
 
 .dBlock{

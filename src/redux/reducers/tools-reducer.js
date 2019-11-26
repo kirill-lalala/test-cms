@@ -53,7 +53,8 @@ export const getData = (page, sortBy, direction) => {
                               };
 
                 dispatch( setData(newData) );
-                localStorage.setItem(`locState`, JSON.stringify(newData));
+                console.log(newData);
+                // localStorage.setItem(`locState`, JSON.stringify(newData));
         });
     }
 };

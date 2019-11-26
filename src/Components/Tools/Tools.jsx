@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from './Tools.module.scss';
 import {connect} from "react-redux";
 import {changeSortParams, getData} from "../../redux/reducers/tools-reducer";
@@ -6,6 +6,7 @@ import Cms from "../Сms/Cms";
 
 class Tools extends React.Component {
 
+    // const [direction, setDirection] = useState('desc');
     changeSortParams = (sortBy, direction) => {
         return this.props.getData(null, sortBy, direction);
     };
