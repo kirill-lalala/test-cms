@@ -2,6 +2,7 @@ import {getCrm} from "../../api/api";
 
 const SET_DATA = 'SET_DATA';
 const CHANGE_SORT_PARAMS = 'CHANGE_SORT_PARAMS';
+const CHANGE_CHECKED = 'CHANGE_CHECKED';
 
 let initialState = {
     direction: false,
@@ -9,6 +10,7 @@ let initialState = {
 };
 
 export const toolsReducer = (state = initialState, action) => {
+
     switch (action.type) {
         case(SET_DATA):
             return{
@@ -22,19 +24,36 @@ export const toolsReducer = (state = initialState, action) => {
                 direction: action.direction,
                 currentPageUrl: action.currentPageUrl
             };
+        case(CHANGE_CHECKED):
+            return{
+                ...state,
+                data: state.data.map( cms => {
+                    if(cms.id === action.id) {
+                        return {...cms, checked: !action.checked}
+                    }
+                    return cms;
+                })
+            };
         default: return state;
     }
 };
 
 export const setData = (data) => ({type: SET_DATA, data});
 export const changeSortParams = (sortBy, direction, page) => ({type: CHANGE_SORT_PARAMS, sortBy, direction, currentPageUrl: page});
+export const changeChecked = (checked, id) => { return {type: CHANGE_CHECKED, checked, id} };
 
 export const getData = (page, sortBy, direction) => {
     return dispatch => {
         getCrm(page, sortBy, direction).then( data => {
-                console.log(data.data);
+                data = data.data;
+
                 sortBy && dispatch( changeSortParams(sortBy, direction, page));
-                dispatch( setData(data.data) );
+                let newData = { ...data,
+                                    data: data.data.map(cms => ( {...cms, checked: false} ) )
+                              };
+
+                console.log(newData);
+                dispatch( setData(newData) );
         });
     }
 };

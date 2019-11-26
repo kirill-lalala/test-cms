@@ -1,8 +1,9 @@
 import React from 'react';
 import styles from './Sidebar.module.scss';
 import {NavLink} from "react-router-dom";
+import {connect} from "react-redux";
 
-const Sidebar = props => {
+const Sidebar = ({favoriteCount}) => {
     return (
         <div className={styles.sidebar}>
             <div className={styles.logo}>
@@ -27,7 +28,10 @@ const Sidebar = props => {
 
             <div className={styles.services}>
                 <ul>
-                    <li className={styles.services__item}><NavLink to="/favorites">Избранное</NavLink></li>
+                    <li className={styles.services__item}>
+                        <NavLink to="/favorites">Избранное</NavLink>
+                        <span className={favoriteCount && 'dBlock'}>{favoriteCount}</span>
+                    </li>
                     <li className={styles.services__item}><NavLink to="">Поиск</NavLink></li>
                     <li className={styles.services__item}><NavLink to="">Кабинет агенства</NavLink></li>
                 </ul>
@@ -36,4 +40,10 @@ const Sidebar = props => {
     );
 };
 
-export default Sidebar;
+const mapStateToProps = state => {
+    return {
+        favoriteCount: state.favoritePage.selectedCmsSystems.length
+    }
+};
+
+export default connect(mapStateToProps, null)(Sidebar);

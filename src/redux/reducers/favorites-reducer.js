@@ -21,6 +21,9 @@ export const favoriteReducer = (state = initialState, action) => {
     }
 };
 
-export const addCms = props => ({type: ADD_CMS, props});
+export const addCms = props => {
+
+    return {type: ADD_CMS, props}
+};
 export const removeCms = id => ({type: REMOVE_CMS, id});
 

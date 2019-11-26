@@ -70,14 +70,14 @@
     }
 
     &:first-child{
-      &::after{
-        content: '1';
-        position: absolute;
+      span{
         display: none;
+        position: absolute;
+        min-width: 20px;
+        min-height: 20px;
+        //display: none;
         right: 0;
         bottom: 0;
-        width: 16px;
-        height: 16px;
         -webkit-border-radius: 50%;
         -moz-border-radius: 50%;
         border-radius: 50%;

@@ -3,12 +3,12 @@ import styles from '../Tools/Tools.module.scss';
 import {connect} from "react-redux";
 import {addCms, removeCms} from "../../redux/reducers/favorites-reducer";
 import {NavLink} from "react-router-dom";
+import {changeChecked} from "../../redux/reducers/tools-reducer";
 
-const Cms = ({addCms, removeCms, ...props }) => {
-    const [checked, setChecked] = useState(false);
+const Cms = ({addCms, removeCms, changeChecked, checked, ...props }) => {
 
     const onCheckedClick = (value, props, id) => {
-        setChecked(value);
+        changeChecked(checked, id);
         if(value) {
             addCms(props);
         }else{
@@ -29,6 +29,10 @@ const Cms = ({addCms, removeCms, ...props }) => {
     );
 };
 
-export default connect(null, {
-    addCms, removeCms
+const mapStateToProps = state => {
+    return {}
+};
+
+export default connect(mapStateToProps, {
+    addCms, removeCms, changeChecked
 })(Cms);
