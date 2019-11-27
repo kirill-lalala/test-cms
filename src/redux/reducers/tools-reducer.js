@@ -45,10 +45,16 @@ export const changeChecked = (checked, id) => { return {type: CHANGE_CHECKED, ch
 export const getData = (page, sortBy, direction) => {
     return dispatch => {
         getCrm(page, sortBy, direction).then( data => {
-
+                console.log(JSON.parse(localStorage.getItem(`favoriteState`)));
                 sortBy && dispatch( changeSortParams(sortBy, direction, page));
+
+                let locFavoriteState = [];
+                if(localStorage.getItem(`favoriteState`)){
+                     locFavoriteState = JSON.parse(localStorage.getItem(`favoriteState`)).selectedCmsSystems;
+                }
+
                 let newData = { ...data,
-                                   data: data.data.map(cms => ( {...cms, checked: false} ) )
+                                   data: data.data.map(cms => ( {...cms, checked: locFavoriteState.some( locStateCrm => locStateCrm.id === cms.id)   } ) )
                               };
 
                 dispatch( setData(newData) );
