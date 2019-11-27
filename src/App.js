@@ -1,11 +1,21 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Sidebar from "./Components/Sidebar/Sidebar";
 import styles from  './App.module.scss';
 import Tools from "./Components/Tools/Tools";
 import {Route} from "react-router-dom";
 import Favorites from "./Components/Favorites/Favorites";
+import {connect} from "react-redux";
+import {setFavoriteState} from "./redux/reducers/favorites-reducer";
 
-function App() {
+function App({setFavoriteState}) {
+
+    useEffect(()=>{
+        if(localStorage.getItem(`favoriteState`)){
+            const localFavoritesState = localStorage.getItem(`favoriteState`);
+            setFavoriteState(JSON.parse(localFavoritesState));
+        }
+    }, [setFavoriteState]);
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.main}>
@@ -27,4 +37,6 @@ function App() {
   );
 }
 
-export default App;
+export default connect(null, {
+    setFavoriteState
+})(App);

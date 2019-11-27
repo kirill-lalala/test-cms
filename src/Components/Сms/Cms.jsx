@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styles from '../Tools/Tools.module.scss';
 import {connect} from "react-redux";
 import {addCms, removeCms} from "../../redux/reducers/favorites-reducer";
@@ -33,7 +33,7 @@ const Cms = ({addCms, removeCms, changeChecked, checked, isToolsComponent, ...pr
                     <NavLink to={`/instruments/${props.code}`} className={styles.cmsTitle}>
                         <p>{props.title}</p>
                     </NavLink>
-                    { props.isSponsor && <a href={props.url} target="_blank">{props.shortUrl}</a> }
+                    { props.isSponsor && <a href={props.url} target="_blank" rel="noopener noreferrer">{props.shortUrl}</a> }
                 </div>
             </td>
             <td className={styles.table__cell}>{props.worksCount} проекта</td>

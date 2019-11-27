@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styles from './Tools.module.scss';
 import {connect} from "react-redux";
 import {changeSortParams, getData} from "../../redux/reducers/tools-reducer";

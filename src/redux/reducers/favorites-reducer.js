@@ -1,5 +1,6 @@
 const ADD_CMS = 'ADD_CMS';
 const REMOVE_CMS = 'REMOVE_CMS';
+const SET_FAVORITES_STATE = 'SET_FAVORITES_STATE';
 
 let initialState = {
     selectedCmsSystems: []
@@ -8,22 +9,30 @@ let initialState = {
 export const favoriteReducer = (state = initialState, action) => {
     switch (action.type) {
         case(ADD_CMS):
-            return {
+            let newAddCms =  {
                 ...state,
                 selectedCmsSystems: [ ...state.selectedCmsSystems, action.props]
             };
+            // localStorage.clear();
+            localStorage.setItem(`favoriteState`, JSON.stringify(newAddCms));
+            return newAddCms;
         case(REMOVE_CMS):
-            return {
+            let newRemoveCms =  {
                 ...state,
                 selectedCmsSystems: [ ...state.selectedCmsSystems.filter(c => c.id !== action.id )]
+            };
+            localStorage.setItem(`favoriteState`, JSON.stringify(newRemoveCms));
+            return newRemoveCms;
+        case(SET_FAVORITES_STATE):
+            return {
+                ...state,
+                ...action.state
             };
         default: return state;
     }
 };
 
-export const addCms = props => {
-
-    return {type: ADD_CMS, props}
-};
+export const addCms = props => ({type: ADD_CMS, props});
 export const removeCms = id => ({type: REMOVE_CMS, id});
+export const setFavoriteState = state => ({type: SET_FAVORITES_STATE, state});
 

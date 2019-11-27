@@ -4,10 +4,13 @@ import styles from "../Tools/Tools.module.scss";
 import Cms from "../Сms/Cms";
 
 const Favorites = props => {
+
     return (
         <div>
             <table className={styles.table}>
-                {props.selectedCmsSystems.map(c => <Cms {...c} isFavoritesComponent={true}/>)}
+                <tbody>
+                    {props.selectedCmsSystems.map(c => <Cms {...c} key={c.id} isFavoritesComponent={true}/>)}
+                </tbody>
             </table>
         </div>
     );
@@ -19,6 +22,4 @@ const mapStateToProps = state => {
     }
 };
 
-export default connect(mapStateToProps, {
-
-})(Favorites);
+export default connect(mapStateToProps, {})(Favorites);
