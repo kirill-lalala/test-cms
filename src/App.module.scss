@@ -7,6 +7,8 @@
 .main{
   display: flex;
   background-color: #F5F5F5;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .sidebar{
@@ -15,12 +17,9 @@
 }
 
 .content{
-  min-height: 600px;
+  min-height: 500px;
   align-self: flex-start;
   width: 100%;
   background-color: white;
-}
-
-.footer{
-  background-color: #fff;
+  margin-bottom: 100px;
 }

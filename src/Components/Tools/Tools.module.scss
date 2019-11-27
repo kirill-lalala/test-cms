@@ -7,7 +7,7 @@
   margin: 0 auto 20px;
   border-spacing: 0;
   &__row{
-    font-size: 12px;
+    font-size: 12px !important;
     font-weight: 400;
     font-style: normal;
     th{
@@ -19,13 +19,15 @@
     }
   }
   &__cell{
-    //display: flex;
     position: relative;
     text-align: left;
     font-size: 14px;
     border-bottom: 1px solid rgba(0, 0 , 0, 0.1);
     height: 80px;
     padding-left: 10px;
+    &_th{
+      font-size: 10px;
+    }
     input{
       display: none;
       &:checked{
@@ -88,6 +90,12 @@
       align-items: center;
       text-align: center;
       padding-right: 150px;
+    }
+    &:nth-of-type(2){
+      width: 140px;
+    }
+    &:nth-of-type(4){
+      width: 200px;
     }
     &_sortElement{
       &:hover{

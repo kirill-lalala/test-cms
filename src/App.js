@@ -7,6 +7,7 @@ import Favorites from "./Components/Favorites/Favorites";
 import {connect} from "react-redux";
 import {setFavoriteState} from "./redux/reducers/favorites-reducer";
 import {localStorageGetItem} from "./api/localStorage";
+import Footer from "./Components/Footer/Footer";
 
 function App({setFavoriteState}) {
 
@@ -30,9 +31,7 @@ function App({setFavoriteState}) {
                 </div>
             </div>
 
-            <div className={styles.footer} style={{display: "flex", justifyContent: "center", padding:"10px"}}>
-                FOOTER DATA
-            </div>
+            <Footer/>
         </div>
     );
 }

@@ -37,10 +37,10 @@ class Tools extends React.Component {
                 <table className={styles.table}>
                     <thead>
                         <tr className={styles.table__row}>
-                            <th className={styles.table__cell}>название</th>
-                            <th className={`${styles.table__cell} ${styles.table__cell_sortElement}` }
+                            <th className={`${styles.table__cell} ${styles.table__cell_th}`}>название</th>
+                            <th className={`${styles.table__cell} ${styles.table__cell_th} ${styles.table__cell_sortElement}` }
                                 onClick={() => this.changeSortParams(this.works_count, this.state.works_count)}>проекты</th>
-                            <th className={`${styles.table__cell} ${styles.table__cell_sortElement}`}
+                            <th className={`${styles.table__cell} ${styles.table__cell_th} ${styles.table__cell_sortElement}`}
                                 onClick={() => this.changeSortParams(this.partners_count, this.state.partners_count)}>партнеры</th>
                             <th className={`${styles.table__cell} ${styles.table__cell_sortElement}`}
                                 onClick={() => this.changeSortParams(this.rate, this.state.rate)}>оценка пользователей</th>
@@ -58,11 +58,11 @@ class Tools extends React.Component {
 
                 <div>
                     <div style={{width: "max-content", margin: "0 auto"}}>
-                        <button onClick={() => this.changePage(firstPage)} disabled={!prevPage}> {'<<'} </button>
-                        <button onClick={() => this.changePage(prevPage)} disabled={!prevPage}> {'<'} </button>
+                        <button onClick={() => this.changePage(firstPage)} disabled={!prevPage} className="btn btn-arrow"> {'<<'} </button>
+                        <button onClick={() => this.changePage(prevPage)} disabled={!prevPage} className="btn btn-arrow"> {'<'} </button>
                         <span>{current_page}</span>
-                        <button onClick={() => this.changePage(nextPage)} disabled={!nextPage}> {'>'} </button>
-                        <button onClick={() => this.changePage(lastPage)} disabled={!lastPage}> {'>>'} </button>
+                        <button onClick={() => this.changePage(nextPage)} disabled={!nextPage} className="btn btn-arrow"> {'>'} </button>
+                        <button onClick={() => this.changePage(lastPage)} disabled={!lastPage} className="btn btn-arrow"> {'>>'} </button>
                     </div>
                 </div>
             </div>
