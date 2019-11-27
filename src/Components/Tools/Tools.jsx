@@ -5,9 +5,20 @@ import {changeSortParams, getData} from "../../redux/reducers/tools-reducer";
 import Cms from "../Сms/Cms";
 
 class Tools extends React.Component {
+    works_count = 'works_count';
+    partners_count = 'partners_count';
+    rate = 'rate';
 
-    // const [direction, setDirection] = useState('desc');
+    state = {
+        'partners_count': true,
+        'works_count': true,
+        'rate': true
+    };
+
     changeSortParams = (sortBy, direction) => {
+        debugger;
+        this.setState({ [sortBy]: !direction} );
+
         return this.props.getData(null, sortBy, direction);
     };
 
@@ -28,11 +39,11 @@ class Tools extends React.Component {
                         <tr className={styles.table__row}>
                             <th className={styles.table__cell}>название</th>
                             <th className={`${styles.table__cell} ${styles.table__cell_sortElement}` }
-                                onClick={() => this.changeSortParams('works_count', !this.props.direction)}>проекты</th>
+                                onClick={() => this.changeSortParams(this.works_count, this.state.works_count)}>проекты</th>
                             <th className={`${styles.table__cell} ${styles.table__cell_sortElement}`}
-                                onClick={() => this.changeSortParams('partners_count', !this.props.direction)}>партнеры</th>
+                                onClick={() => this.changeSortParams(this.partners_count, this.state.partners_count)}>партнеры</th>
                             <th className={`${styles.table__cell} ${styles.table__cell_sortElement}`}
-                                onClick={() => this.changeSortParams('rate', !this.props.direction)}>оценка пользователей</th>
+                                onClick={() => this.changeSortParams(this.rate, this.state.rate)}>оценка пользователей</th>
                             <th className={styles.table__cell}>сравнить</th>
                         </tr>
                     </thead>
