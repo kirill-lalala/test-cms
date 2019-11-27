@@ -45,16 +45,13 @@ export const changeChecked = (checked, id) => { return {type: CHANGE_CHECKED, ch
 export const getData = (page, sortBy, direction) => {
     return dispatch => {
         getCrm(page, sortBy, direction).then( data => {
-                data = data.data;
 
                 sortBy && dispatch( changeSortParams(sortBy, direction, page));
                 let newData = { ...data,
-                                    data: data.data.map(cms => ( {...cms, checked: false} ) )
+                                   data: data.data.map(cms => ( {...cms, checked: false} ) )
                               };
 
                 dispatch( setData(newData) );
-                console.log(newData);
-                // localStorage.setItem(`locState`, JSON.stringify(newData));
         });
     }
 };

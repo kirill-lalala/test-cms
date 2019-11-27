@@ -47,7 +47,7 @@ const Cms = ({addCms, removeCms, changeChecked, checked, isToolsComponent, ...pr
                         <label htmlFor={props.id} className={styles.table__cell_checked}/>
                     </td>
             }
-            {props.isFavoritesComponent && <td className={styles.table__cell}> <button>Удалить</button></td>}
+            {props.isFavoritesComponent && <td className={styles.table__cell}> <button onClick={() => removeCms(props.id)}>Удалить</button></td>}
         </tr>
     );
 };
