@@ -29,7 +29,13 @@ class Tools extends React.Component {
         return this.props.getDataSuccess(page, this.props.toolsData.sortBy, this.props.toolsData.direction);
     };
 
-
+    renderThSortElement = (sort, direction, title) => {
+        return <th className={`${styles.table__cell} ${styles.table__cell_th} ${styles.table__cell_sortElement}` }
+                   onClick={() => this.changeSortParams(sort, direction)}>
+                {title}
+            <span className={`${styles.triangle} ${direction || styles.triangle_rotate}`}/>
+        </th>
+    };
 
     render(){
         const {first_page_url: firstPage,  prev_page_url: prevPage,
@@ -41,21 +47,11 @@ class Tools extends React.Component {
                     <thead>
                         <tr className={styles.table__row}>
                             <th className={`${styles.table__cell} ${styles.table__cell_th}`}>название</th>
-                            <th className={`${styles.table__cell} ${styles.table__cell_th} ${styles.table__cell_sortElement}` }
-                                onClick={() => this.changeSortParams(this.works_count, this.state.works_count)}>
-                                проекты
-                                <span className={`${styles.triangle} ${!this.state.works_count && styles.triangle_rotate}`}/>
-                            </th>
-                            <th className={`${styles.table__cell} ${styles.table__cell_th} ${styles.table__cell_sortElement}`}
-                                onClick={() => this.changeSortParams(this.partners_count, this.state.partners_count)}>
-                                партнеры
-                                <span className={`${styles.triangle} ${!this.state.partners_count && styles.triangle_rotate}`}/>
-                            </th>
-                            <th className={`${styles.table__cell} ${styles.table__cell_th} ${styles.table__cell_sortElement}`}
-                                onClick={() => this.changeSortParams(this.rate, this.state.rate)}>
-                                оценка пользователей
-                                <span className={`${styles.triangle} ${!this.state.rate && styles.triangle_rotate}`}/>
-                            </th>
+
+                            {this.renderThSortElement(this.works_count, this.state.works_count, 'проекты')}
+                            {this.renderThSortElement(this.partners_count, this.state.partners_count, 'партнеры')}
+                            {this.renderThSortElement(this.rate, this.state.rate, 'оценка пользователей')}
+
                             <th className={`${styles.table__cell} ${styles.table__cell_th}`}>сравнить</th>
                         </tr>
                     </thead>
