@@ -1,4 +1,5 @@
-import {localStorageSetItem} from "../../api/localStorage";
+import { storage} from "../../api/localStorage";
+import {API} from "../../api/api";
 
 const ADD_CMS = 'ADD_CMS';
 const REMOVE_CMS = 'REMOVE_CMS';
@@ -15,7 +16,7 @@ export const favoriteReducer = (state = initialState, action) => {
                 ...state,
                 selectedCmsSystems: [ ...state.selectedCmsSystems, action.props]
             };
-            localStorageSetItem(`favoriteState`, newAddCms.selectedCmsSystems);
+            storage.setItem(`favoriteState`, newAddCms.selectedCmsSystems);
             return newAddCms;
 
         case(REMOVE_CMS):
@@ -23,7 +24,7 @@ export const favoriteReducer = (state = initialState, action) => {
                 ...state,
                 selectedCmsSystems: [ ...state.selectedCmsSystems.filter(c => c.id !== action.id )]
             };
-            localStorageSetItem(`favoriteState`, newRemoveCms.selectedCmsSystems);
+            storage.getItem(`favoriteState`, newRemoveCms.selectedCmsSystems);
             return newRemoveCms;
 
         case(SET_FAVORITES_STATE):

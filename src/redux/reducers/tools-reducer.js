@@ -1,4 +1,5 @@
-import {getCrm} from "../../api/api";
+import {API} from "../../api/api";
+import {storage} from "../../api/localStorage";
 
 const SET_DATA = 'SET_DATA';
 const CHANGE_SORT_PARAMS = 'CHANGE_SORT_PARAMS';
@@ -45,20 +46,20 @@ export const setData = (data) => ({type: SET_DATA, data});
 export const changeSortParams = (sortBy, direction, page) => ({type: CHANGE_SORT_PARAMS, sortBy, direction, currentPageUrl: page});
 export const changeChecked = (checked, id) => ( {type: CHANGE_CHECKED, checked, id} );
 
-export const getData = (page, sortBy, direction) => {
+export const getDataSuccess = (page, sortBy, direction) => {
     return dispatch => {
-        getCrm(page, sortBy, direction).then( data => {
+        API.getCrmSuccess(page, sortBy, direction).then( data => {
                 sortBy && dispatch( changeSortParams(sortBy, direction, page));
 
                 let locFavoriteState = [];
-                if(localStorage.getItem(`favoriteState`)){
-                     locFavoriteState = JSON.parse(localStorage.getItem(`favoriteState`));
+                if(storage.getItem(`favoriteState`)){
+                     locFavoriteState = storage.getItem(`favoriteState`);
                 }
 
                 let newData = { ...data,
                                    data: data.data.map(cms => ( {...cms, checked: locFavoriteState.some( locStateCrm => locStateCrm.id === cms.id)   } ) )
                               };
-
+                debugger;
                 dispatch( setData(newData) );
         });
     }

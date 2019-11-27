@@ -6,14 +6,15 @@ import {Route} from "react-router-dom";
 import Favorites from "./Components/Favorites/Favorites";
 import {connect} from "react-redux";
 import {setFavoriteState} from "./redux/reducers/favorites-reducer";
-import {localStorageGetItem} from "./api/localStorage";
+import {storage} from "./api/localStorage";
 import Footer from "./Components/Footer/Footer";
 
 function App({setFavoriteState}) {
 
     useEffect(()=>{
-        if(localStorageGetItem(`favoriteState`)){
-            setFavoriteState(localStorageGetItem(`favoriteState`));
+        if(storage.getItem(`favoriteState`)){
+            let localStorageFavoritesData = storage.getItem(`favoriteState`);
+            setFavoriteState(localStorageFavoritesData);
         }
     }, [setFavoriteState]);
 
