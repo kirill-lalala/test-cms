@@ -17,6 +17,7 @@ export const toolsReducer = (state = initialState, action) => {
                 ...state,
                 ...action.data
             };
+
         case(CHANGE_SORT_PARAMS):
             return{
                 ...state,
@@ -24,6 +25,7 @@ export const toolsReducer = (state = initialState, action) => {
                 direction: action.direction,
                 currentPageUrl: action.currentPageUrl
             };
+
         case(CHANGE_CHECKED):
             return{
                 ...state,
@@ -34,23 +36,23 @@ export const toolsReducer = (state = initialState, action) => {
                     return cms;
                 })
             };
+
         default: return state;
     }
 };
 
 export const setData = (data) => ({type: SET_DATA, data});
 export const changeSortParams = (sortBy, direction, page) => ({type: CHANGE_SORT_PARAMS, sortBy, direction, currentPageUrl: page});
-export const changeChecked = (checked, id) => { return {type: CHANGE_CHECKED, checked, id} };
+export const changeChecked = (checked, id) => ( {type: CHANGE_CHECKED, checked, id} );
 
 export const getData = (page, sortBy, direction) => {
     return dispatch => {
         getCrm(page, sortBy, direction).then( data => {
-                console.log(JSON.parse(localStorage.getItem(`favoriteState`)));
                 sortBy && dispatch( changeSortParams(sortBy, direction, page));
 
                 let locFavoriteState = [];
                 if(localStorage.getItem(`favoriteState`)){
-                     locFavoriteState = JSON.parse(localStorage.getItem(`favoriteState`)).selectedCmsSystems;
+                     locFavoriteState = JSON.parse(localStorage.getItem(`favoriteState`));
                 }
 
                 let newData = { ...data,

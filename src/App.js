@@ -6,35 +6,35 @@ import {Route} from "react-router-dom";
 import Favorites from "./Components/Favorites/Favorites";
 import {connect} from "react-redux";
 import {setFavoriteState} from "./redux/reducers/favorites-reducer";
+import {localStorageGetItem} from "./api/localStorage";
 
 function App({setFavoriteState}) {
 
     useEffect(()=>{
-        if(localStorage.getItem(`favoriteState`)){
-            const localFavoritesState = localStorage.getItem(`favoriteState`);
-            setFavoriteState(JSON.parse(localFavoritesState));
+        if(localStorageGetItem(`favoriteState`)){
+            setFavoriteState(localStorageGetItem(`favoriteState`));
         }
     }, [setFavoriteState]);
 
-  return (
-    <div className={styles.wrapper}>
-      <div className={styles.main}>
+    return (
+        <div className={styles.wrapper}>
+            <div className={styles.main}>
 
-        <div className={styles.sidebar}>
-          <Sidebar/>
+                <div className={styles.sidebar}>
+                    <Sidebar/>
+                </div>
+
+                <div className={styles.content}>
+                    <Route path="/instruments" render={() => <Tools/>}/>
+                    <Route path="/favorites" render={() => <Favorites/>}/>
+                </div>
+            </div>
+
+            <div className={styles.footer} style={{display: "flex", justifyContent: "center", padding:"10px"}}>
+                FOOTER DATA
+            </div>
         </div>
-
-        <div className={styles.content}>
-          <Route path="/instruments" render={() => <Tools/>}/>
-          <Route path="/favorites" render={() => <Favorites/>}/>
-        </div>
-      </div>
-
-      <div className={styles.footer} style={{display: "flex", justifyContent: "center", padding:"10px"}}>
-        FOOTER DATA
-      </div>
-    </div>
-  );
+    );
 }
 
 export default connect(null, {

@@ -16,9 +16,7 @@ class Tools extends React.Component {
     };
 
     changeSortParams = (sortBy, direction) => {
-        debugger;
         this.setState({ [sortBy]: !direction} );
-
         return this.props.getData(null, sortBy, direction);
     };
 
@@ -28,7 +26,6 @@ class Tools extends React.Component {
 
     componentDidMount() {
         this.props.getData();
-
     }
 
     render(){
@@ -51,9 +48,7 @@ class Tools extends React.Component {
                     <tbody>
                     {
                         this.props.cmsSystems &&
-                        this.props.cmsSystems.map(c => {
-                                return <Cms key={c.id} {...c} isToolsComponent={true}/>
-                        })
+                        this.props.cmsSystems.map(c =>  <Cms key={c.id} {...c} isToolsComponent={true}/>)
                     }
                     </tbody>
                 </table>
@@ -81,6 +76,4 @@ let mapStateToProps = (state) => {
     }
 };
 
-export default connect(mapStateToProps, {
-    getData, changeSortParams
-})(Tools);
+export default connect(mapStateToProps, { getData, changeSortParams })(Tools);
