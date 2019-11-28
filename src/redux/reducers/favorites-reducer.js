@@ -23,7 +23,7 @@ export const favoriteReducer = (state = initialState, action) => {
                 ...state,
                 selectedCmsSystems: [ ...state.selectedCmsSystems.filter(c => c.id !== action.id )]
             };
-            storage.getItem(`favoriteState`, newRemoveCms.selectedCmsSystems);
+            storage.setItem(`favoriteState`, newRemoveCms.selectedCmsSystems);
             return newRemoveCms;
 
         case(SET_FAVORITES_STATE):
@@ -39,3 +39,10 @@ export const favoriteReducer = (state = initialState, action) => {
 export const addCms = props => ({type: ADD_CMS, props});
 export const removeCms = id => ({type: REMOVE_CMS, id});
 export const setFavoriteState = state => ({type: SET_FAVORITES_STATE, state});
+
+export const restoreFavoriteCms = () => (dispatch) => {
+    let localStorageFavoritesData = storage.getItem(`favoriteState`);
+    dispatch(setFavoriteState(localStorageFavoritesData));
+};
+
+// export const saveCms = ()

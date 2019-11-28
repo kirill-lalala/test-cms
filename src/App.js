@@ -5,18 +5,14 @@ import Tools from "./Components/Tools/Tools";
 import {Route} from "react-router-dom";
 import Favorites from "./Components/Favorites/Favorites";
 import {connect} from "react-redux";
-import {setFavoriteState} from "./redux/reducers/favorites-reducer";
-import {storage} from "./api/localStorage";
+import {restoreFavoriteCms} from "./redux/reducers/favorites-reducer";
 import Footer from "./Components/Footer/Footer";
 
-function App({setFavoriteState}) {
+function App({ restoreFavoriteCms}) {
 
     useEffect(()=>{
-        if(storage.getItem(`favoriteState`)){
-            let localStorageFavoritesData = storage.getItem(`favoriteState`);
-            setFavoriteState(localStorageFavoritesData);
-        }
-    }, [setFavoriteState]);
+        restoreFavoriteCms();
+    }, [restoreFavoriteCms]);
 
     return (
         <div className={styles.wrapper}>
@@ -38,5 +34,5 @@ function App({setFavoriteState}) {
 }
 
 export default connect(null, {
-    setFavoriteState
+    restoreFavoriteCms
 })(App);
