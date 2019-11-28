@@ -1,19 +1,15 @@
 import React from 'react';
 import styles from '../Tools/Tools.module.scss';
 import {connect} from "react-redux";
-import {addCms, removeCms} from "../../redux/reducers/favorites-reducer";
+import {saveCms} from "../../redux/reducers/favorites-reducer";
 import {NavLink} from "react-router-dom";
 import {changeChecked} from "../../redux/reducers/tools-reducer";
 
-const Cms = ({addCms, removeCms, changeChecked, checked, renderCheckbox, renderButton, ...props }) => {
+const Cms = ({saveCms, changeChecked, checked, renderCheckbox, renderButton, ...props }) => {
 
     const onCheckedClick = (value, props, id) => {
         changeChecked(checked, id);
-        if(value) {
-            addCms(props);
-        }else{
-            removeCms(id);
-        }
+        value ? saveCms(props): saveCms(id);
     };
 
     return (
@@ -47,7 +43,7 @@ const Cms = ({addCms, removeCms, changeChecked, checked, renderCheckbox, renderB
                         <label htmlFor={props.id} className={styles.table__cell_checked}/>
                     </td>
             }
-            {renderButton && <td className={styles.table__cell}> <button onClick={() => removeCms(props.id)}>Удалить</button></td>}
+            {renderButton && <td className={styles.table__cell}> <button onClick={() => saveCms(props.id)}>Удалить</button></td>}
         </tr>
     );
 };
@@ -57,5 +53,5 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps, {
-    addCms, removeCms, changeChecked
+    saveCms, changeChecked
 })(Cms);

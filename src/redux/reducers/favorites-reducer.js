@@ -1,4 +1,4 @@
-import { storage} from "../../api/localStorage";
+import {storage} from "../../api/localStorage";
 
 const ADD_CMS = 'CMS/FAVORITE/ADD_CMS';
 const REMOVE_CMS = 'CMS/FAVORITE/REMOVE_CMS';
@@ -11,20 +11,16 @@ let initialState = {
 export const favoriteReducer = (state = initialState, action) => {
     switch (action.type) {
         case(ADD_CMS):
-            let newAddCms =  {
+            return {
                 ...state,
-                selectedCmsSystems: [ ...state.selectedCmsSystems, action.props]
+                selectedCmsSystems: [...state.selectedCmsSystems, action.props]
             };
-            storage.setItem(`favoriteState`, newAddCms.selectedCmsSystems);
-            return newAddCms;
 
         case(REMOVE_CMS):
-            let newRemoveCms =  {
+            return {
                 ...state,
-                selectedCmsSystems: [ ...state.selectedCmsSystems.filter(c => c.id !== action.id )]
+                selectedCmsSystems: [...state.selectedCmsSystems.filter(c => c.id !== action.id)]
             };
-            storage.setItem(`favoriteState`, newRemoveCms.selectedCmsSystems);
-            return newRemoveCms;
 
         case(SET_FAVORITES_STATE):
             return {
@@ -40,9 +36,16 @@ export const addCms = props => ({type: ADD_CMS, props});
 export const removeCms = id => ({type: REMOVE_CMS, id});
 export const setFavoriteState = state => ({type: SET_FAVORITES_STATE, state});
 
-export const restoreFavoriteCms = () => (dispatch) => {
+export const restoreFavoriteCms = () => dispatch => {
     let localStorageFavoritesData = storage.getItem(`favoriteState`);
     dispatch(setFavoriteState(localStorageFavoritesData));
 };
 
-// export const saveCms = ()
+export const saveCms = (data) => (dispatch, getState) => {
+    if (Number.isInteger(data)) dispatch(removeCms(data));
+    else dispatch(addCms(data));
+
+    const localFavoriteState = getState().favoritePage.selectedCmsSystems;
+    storage.setItem(`favoriteState`, localFavoriteState);
+
+};
