@@ -58,8 +58,7 @@ class Tools extends React.Component {
 
                     <tbody>
                     {
-                        this.props.toolsData.data &&
-                        this.props.toolsData.data.map(c =>  <Cms key={c.id} {...c} isToolsComponent={true}/>)
+                        this.props.toolsData.data.map(c => <Cms key={c.id} {...c} renderCheckbox={true}/>)
                     }
                     </tbody>
                 </table>

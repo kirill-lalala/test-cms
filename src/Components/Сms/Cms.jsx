@@ -5,7 +5,7 @@ import {addCms, removeCms} from "../../redux/reducers/favorites-reducer";
 import {NavLink} from "react-router-dom";
 import {changeChecked} from "../../redux/reducers/tools-reducer";
 
-const Cms = ({addCms, removeCms, changeChecked, checked, isToolsComponent, ...props }) => {
+const Cms = ({addCms, removeCms, changeChecked, checked, renderCheckbox, renderButton, ...props }) => {
 
     const onCheckedClick = (value, props, id) => {
         changeChecked(checked, id);
@@ -41,13 +41,13 @@ const Cms = ({addCms, removeCms, changeChecked, checked, isToolsComponent, ...pr
             <td className={styles.table__cell}>{props.rate}</td>
 
             {
-                isToolsComponent &&
+                renderCheckbox &&
                     <td className={styles.table__cell}>
                         <input id={props.id} checked={checked} onChange={() => onCheckedClick(!checked, props, props.id)} type="checkbox"/>
                         <label htmlFor={props.id} className={styles.table__cell_checked}/>
                     </td>
             }
-            {props.isFavoritesComponent && <td className={styles.table__cell}> <button onClick={() => removeCms(props.id)}>Удалить</button></td>}
+            {renderButton && <td className={styles.table__cell}> <button onClick={() => removeCms(props.id)}>Удалить</button></td>}
         </tr>
     );
 };

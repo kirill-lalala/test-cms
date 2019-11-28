@@ -1,9 +1,8 @@
 import { storage} from "../../api/localStorage";
-import {API} from "../../api/api";
 
-const ADD_CMS = 'ADD_CMS';
-const REMOVE_CMS = 'REMOVE_CMS';
-const SET_FAVORITES_STATE = 'SET_FAVORITES_STATE';
+const ADD_CMS = 'CMS/FAVORITE/ADD_CMS';
+const REMOVE_CMS = 'CMS/FAVORITE/REMOVE_CMS';
+const SET_FAVORITES_STATE = 'CMS/FAVORITE/SET_FAVORITES_STATE';
 
 let initialState = {
     selectedCmsSystems: []

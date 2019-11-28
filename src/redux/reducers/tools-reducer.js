@@ -1,9 +1,9 @@
 import {API} from "../../api/api";
 import {storage} from "../../api/localStorage";
 
-const SET_DATA = 'SET_DATA';
-const CHANGE_SORT_PARAMS = 'CHANGE_SORT_PARAMS';
-const CHANGE_CHECKED = 'CHANGE_CHECKED';
+const SET_DATA = 'CMS/TOOLS/SET_DATA';
+const CHANGE_SORT_PARAMS = 'CMS/TOOLS/CHANGE_SORT_PARAMS';
+const CHANGE_CHECKED = 'CMS/TOOLS/CHANGE_CHECKED';
 
 let initialState = {
     direction: false,

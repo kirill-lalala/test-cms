@@ -9,7 +9,7 @@ const Favorites = props => {
         <div>
             <table className={styles.table}>
                 <tbody>
-                    {props.selectedCmsSystems.map(c => <Cms {...c} key={c.id} isFavoritesComponent={true}/>)}
+                    {props.selectedCmsSystems.map(c => <Cms {...c} key={c.id} renderButton={true}/>)}
                 </tbody>
             </table>
         </div>
